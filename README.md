@@ -38,7 +38,9 @@ https://client-snowy-tau.vercel.app/
 ## Installation
 
 ### Prerequisites
-- Node.js (version)
+- Node.js 
+- TypeScript 
+- Redux  
 
 ### Clone the repository
 ```bash
