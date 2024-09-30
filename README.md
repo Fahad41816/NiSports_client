@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# NiSports - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project Logo](https://i.ibb.co.com/2Zt8m6B/white-D1w-Yu8-Wv.png)
 
-Currently, two official plugins are available:
+## Table of Contents
+1. [Project Description](#project-description)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Environment Variables](#environment-variables)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact](#contact)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Description
+NiSports is the frontend part of a facility booking platform where users can browse available facilities, check dates, and book slots. The frontend interacts with the backend API and provides a user-friendly interface for browsing, booking, and making payments. Registered users can log in, view their dashboard for booking history, and cancel their bookings, while admins have access to facility management tools.
 
-## Expanding the ESLint configuration
+## Features
+- Facility browsing and booking interface
+- User registration and login
+- Dashboard for managing bookings
+- Payment integration with SSLCOMMERZ
+- Admin panel for updating facilities
+- Responsive design for mobile and desktop
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Live Link
+https://client-snowy-tau.vercel.app/
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
+- TypeScript
+- React.js
+- Redux  for state management
+- CS/SCSS for styling 
+- CS/SCSS farmwork Tailwind and dasyui, metrial ui, for styling 
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Prerequisites
+- Node.js (version)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Clone the repository
+```bash
+git clone https://github.com/Fahad41816/NiSports_client.git
