@@ -12,6 +12,7 @@ import {
   EnvironmentOutlined, 
   DeleteOutlined,
 } from "@ant-design/icons";
+import { toast, Toaster } from "sonner";
 
 const MyBooking = () => {
   const { data = [], isLoading } = useGetUserBookingsQuery(undefined);
@@ -22,6 +23,7 @@ const MyBooking = () => {
 
   const HandleCancleBooking = (id: string) => {
     CancleBooking(id);
+    toast.error("Your Booking Cancled!");
   };
 
   if (isLoading) {
@@ -30,6 +32,7 @@ const MyBooking = () => {
 
   return (
     <section>
+      <Toaster/>
       {data?.data?.map((Booking: any) => (
         <Card
           actions={[
@@ -77,7 +80,7 @@ const MyBooking = () => {
             <Col span={12}>
               <p>
                 Booking Status:{" "}
-                {Booking?.isBooked === "confirmed" ? (
+                {Booking?.isBooked == "confirmed" ? (
                   <Tag icon={<CheckCircleOutlined />} color="green">
                     Confirmed
                   </Tag>

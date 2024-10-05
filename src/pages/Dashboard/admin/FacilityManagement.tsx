@@ -13,7 +13,7 @@ import { useState } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Form, Input, InputNumber } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 
 const layout = {
   labelCol: { span: 8 },
@@ -32,7 +32,12 @@ const validateMessages = {
 };
 
 const FacilityManagement = () => {
-  const { data: facility, isLoading } = useGetFacilityQuery({});
+
+
+  const { data: facility, isLoading } = useGetFacilityQuery({  Search: undefined,
+    page: 1, 
+    limit : 10,
+    filter: undefined});
 
   const [isAddFacilityModalOpen, setisAddFacilityModalOpen] = useState(false);
   const [isEditFacilityModalOpen, setisEditFacilityModalOpen] = useState(false);
@@ -131,6 +136,7 @@ const FacilityManagement = () => {
 
       // Step 5: Show success message
       toast.success("Facility added successfully!");
+      setisAddFacilityModalOpen(false)
     } catch (error) {
       // Step 6: Handle errors during image upload or facility addition
       console.error("Error adding facility:", error);
@@ -141,6 +147,7 @@ const FacilityManagement = () => {
   const [DeletFacility] = useDeleteFacilityMutation();
 
   const DeleteFacility = (id: string) => {
+    toast.success("Facility Deleted.");
     DeletFacility(id);
   };
 
@@ -183,6 +190,8 @@ const FacilityManagement = () => {
       };
 
       UpdateFacility({ id: formData._id, updateData: updatedFacilityData });
+      toast.success("Facility Updated successfully!");
+      setisEditFacilityModalOpen(false)
     } catch (error) {
       console.error("Error updating facility:", error);
       toast.error("Error updating facility.");
@@ -201,6 +210,7 @@ const FacilityManagement = () => {
         borderTop: "1px solid #eee",
       }}
     >
+      <Toaster richColors position="top-right"/> 
       <div className="mb-2">
         <Button
           style={{ background: "#177C82", color: "#fff" }}
@@ -210,7 +220,7 @@ const FacilityManagement = () => {
         </Button>
       </div>
       <List
-        dataSource={facility?.data}
+        dataSource={facility?.data?.data}
         loading={isLoading}
         renderItem={(item: any) => (
           <List.Item

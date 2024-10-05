@@ -40,7 +40,7 @@ const Booking = () => {
 
   const { data: Facilitys } = useGetFacilityQuery({});
 
-  const AllFacility = Facilitys?.data?.map((Facility : any) => ({
+  const AllFacility = Facilitys?.data?.data.map((Facility : any) => ({
     label: Facility.name,
     value: Facility._id
   }))

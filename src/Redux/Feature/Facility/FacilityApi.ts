@@ -4,10 +4,10 @@ import BaseApi from "../../BaseApi/BaseApi";
 const Facilitys = BaseApi.injectEndpoints({
   endpoints: (builder) => ({
     GetFacility: builder.query({
-      query: ({ Search }) => {
+      query: ({ Search, page, limit, filter }) => {
 
 
-        console.log(Search)
+        console.log(page, limit, filter)
 
         let url = 'facility'
 
@@ -16,10 +16,20 @@ const Facilitys = BaseApi.injectEndpoints({
         if(Search){
             queryParams.push(`search=${Search}`)
         }
+        if(page){
+            queryParams.push(`page=${page}`)
+        }
+        if(limit){
+            queryParams.push(`limit=${limit}`)
+        }
+        if(filter){
+            queryParams.push(`filter=${filter}`)
+        }
 
         if(queryParams.length > 0){
             url += `?${queryParams.join("&")}` 
         }
+        console.log(url)
 
         return {
           url: url,

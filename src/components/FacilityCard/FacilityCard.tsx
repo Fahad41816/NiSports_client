@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const FacilityCard = ({ Facility, RedirectLink } : any) => {
   return (
-    <div className="max-w-xs  mx-auto rounded-lg overflow-hidden h-auto shadow-lg flex flex-col justify-between">
+    <div className="md:w-[350px]  mx-auto rounded-lg overflow-hidden h-auto shadow-lg flex flex-col justify-between">
       <img
         className="w-full h-48 object-cover"
         src={Facility.image}

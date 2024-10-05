@@ -11,6 +11,7 @@ const PaymentProccess = () => {
   const User = useSelector((state: any) => state.Auth);
 
   const booking = useSelector((state: any) => state.Booking);
+ 
 
   useEffect(()=>{
     if(!booking.date){
@@ -32,14 +33,25 @@ const PaymentProccess = () => {
     }));
   };
 
-  console.log(User)
+ 
 
   const location = useLocation()
 
-  console.log(location)
+ 
 
   const handleSubmit = async (e: any) => {
     e.preventDefault(); // Prevent default form submission behavior
+
+    
+
+    Swal.fire({
+      title: "Payment Proccessing...",
+      html: "please weiting for payment proccessing.", 
+      background:'#177C82',
+      color:"#fff", 
+    }) 
+
+    
 
     if(!User.user){
       Swal.fire({
@@ -51,6 +63,7 @@ const PaymentProccess = () => {
         if(data.isConfirmed){ 
           Navigate('/Login', {state:location.pathname})
         }
+        Swal.close()
       });
       return
     }
@@ -76,7 +89,7 @@ const PaymentProccess = () => {
     };
 
     // Handle form data (log to console, or send it to the backend)
-    await fetch("http://localhost:5000/Payment", {
+    await fetch("https://nisports.vercel.app/Payment", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(OrderDetails),
